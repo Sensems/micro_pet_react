@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {axiosGet,axiosPost} from './api/http';
+
+//定义全局axios方法
+React.axiosGet = axiosGet;
+React.axiosPost = axiosPost;
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

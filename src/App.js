@@ -1,26 +1,31 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-// import logo from './logo.svg';
-import './App.css';
+import React, {Suspense} from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import CircularProgress from '@material-ui/core/CircularProgress';
 import routes from './router/index'
+let style = {
+	fallbackBoxStyle: {
+		position: 'fixed',
+		top: '0',
+		left: '0',
+		bottom: '0',
+		right: '0',
+		background: 'rgb(255,255,255,.6)',
+	},
+	CircularProgressStyle:{
+		position: 'absolute',
+		left:'50%',
+		top:'50%',
+		color: '#00bfff',
+		marginLeft: '-20px',
+		marginTop: '-20px',
+	}
+};
 
 function App() {
+	let fallbackBox = <div style={style.fallbackBoxStyle}><CircularProgress style={style.CircularProgressStyle}/></div>;
   return (
 			<Router>
-				{/*<div className="App">
-					<header className="App-header">
-						<img src={logo} className="App-logo" alt="logo" />
-						<p>
-							Edit <code>src/App.js</code> and save to reload.
-						</p>
-						<Link
-								to="/login"
-								className="App-link"
-						>
-							go to login
-						</Link>
-					</header>
-				</div>*/}
+				<Suspense fallback={fallbackBox}>
 				{
 					routes.map((router,index)=>{
 						if(router.exact){
@@ -42,6 +47,7 @@ function App() {
 						}
 					})
 				}
+				</Suspense>
 			</Router>
   );
 }
