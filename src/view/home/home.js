@@ -2,9 +2,10 @@ import React, {Component} from 'react'
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import FolderIcon from '@material-ui/icons/Folder';
-import RestoreIcon from '@material-ui/icons/Restore';
+import HomeRounded from '@material-ui/icons/HomeRounded';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import DescriptionIcon from '@material-ui/icons/Description';
+import { Route, Link, Switch } from "react-router-dom";
 
 import './home.scss'
 
@@ -13,7 +14,7 @@ class Home extends Component {
 		super(props);
 		this.state = {
 			title: '这是首页',
-			NavigationValue: 'recents',
+			NavigationValue: 'index',
 		}
 	}
 
@@ -21,12 +22,22 @@ class Home extends Component {
 		let data = this.state;
 		return (
 				<div className="container">
+						<div className="homeBox">
+							<Switch>
+								{
+									this.props.routes.map((route,key) => {
+										return <Route key={key} exact path={route.path} component={route.component}/>
+									})
+								}
+							</Switch>
+						</div>
+					<Link to='/home/article'>hehe</Link>
 					<div className="bottomNav">
 						<BottomNavigation value={data.NavigationValue} onChange={this.handleChange}>
-							<BottomNavigationAction label="Recents" value="recents" icon={<RestoreIcon />} />
-							<BottomNavigationAction label="Favorites" value="favorites" icon={<FavoriteIcon />} />
-							<BottomNavigationAction label="Nearby" value="nearby" icon={<LocationOnIcon />} />
-							<BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon />} />
+							<BottomNavigationAction label="首页" value="index" icon={<HomeRounded />} />
+							<BottomNavigationAction label="文章" value="article" icon={<DescriptionIcon />} />
+							<BottomNavigationAction label="收藏" value="favorite" icon={<FavoriteIcon />} />
+							<BottomNavigationAction label="我的" value="my" icon={<FolderIcon />} />
 						</BottomNavigation>
 					</div>
 				</div>
@@ -36,7 +47,11 @@ class Home extends Component {
 	handleChange = (e,newValue) => {
 		this.setState({
 			NavigationValue: newValue,
-		})
+		});
+		if(newValue === "index") {
+			newValue = '';
+		}
+		this.props.history.push(`/home/${newValue}`)
 	}
 }
 

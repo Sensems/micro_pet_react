@@ -136,7 +136,7 @@ class Login extends Component{
 					is_loading: false,
 					login_title:'登录'
 				});
-				this.props.history.push('/index');
+				this.props.history.push('/home');
 			}else {
 				this.setState({
 					is_loading: false,

@@ -1,7 +1,10 @@
 import React, {Suspense} from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { connect } from 'react-redux'
+
 import routes from './router/index'
+import './App.css'
 let style = {
 	fallbackBoxStyle: {
 		position: 'fixed',
@@ -24,32 +27,36 @@ let style = {
 function App() {
 	let fallbackBox = <div style={style.fallbackBoxStyle}><CircularProgress style={style.CircularProgressStyle}/></div>;
   return (
-			<Router>
-				<Suspense fallback={fallbackBox}>
-				{
-					routes.map((router,index)=>{
-						if(router.exact){
-							return <Route exact key={index} path={router.path}
-								render = {
-									props =>(
-										<router.component {...props} routes = {router.routes}/>
-									)
+  		<div className="animate-route">
+				<Router>
+					<Suspense fallback={fallbackBox}>
+						<Switch>
+						{
+							routes.map((router,index)=>{
+								if(router.exact){
+									return <Route exact key={index} path={router.path}
+										render = {
+											props =>(
+												<router.component {...props} routes = {router.routes}/>
+											)
+										}
+									/>
+								}else{
+									return <Route key={index} path={router.path}
+										render = {
+											props =>(
+												<router.component {...props} routes = {router.routes} />
+											)
+										}
+									/>
 								}
-							/>
-						}else{
-							return <Route key={index} path={router.path}
-								render = {
-									props =>(
-										<router.component {...props} routes = {router.routes} />
-									)
-								}
-							/>
+							})
 						}
-					})
-				}
-				</Suspense>
-			</Router>
+						</Switch>
+					</Suspense>
+				</Router>
+			</div>
   );
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

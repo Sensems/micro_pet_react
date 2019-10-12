@@ -5,12 +5,24 @@
   left: 0;
   right: 0;
   text-align: center;
-  font-size: 50px;
   .bottomNav {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     box-shadow: 0 12px 29px 4px #b5b5b5;
+  }
+  .homeBox {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: fadeRoute;
+  }
+}
+@keyframes fadeRoute {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

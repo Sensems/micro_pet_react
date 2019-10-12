@@ -1,22 +1,14 @@
-.App {
-  text-align: center;
+.animate-route {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: fadeRoute;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
+@keyframes fadeRoute {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
