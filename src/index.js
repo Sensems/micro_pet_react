@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {axiosGet,axiosPost} from './api/http';
-import { Provider, connect } from 'react-redux'
+import { Provider } from 'react-redux'
 import store from './store'
 
 //定义全局axios方法

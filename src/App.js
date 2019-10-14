@@ -1,7 +1,6 @@
 import React, {Suspense} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { connect } from 'react-redux'
 
 import routes from './router/index'
 import './App.css'
@@ -59,4 +58,4 @@ function App() {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

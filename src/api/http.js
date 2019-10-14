@@ -5,7 +5,7 @@ export function axiosPost(url,params) {
 	return axios({
 		method: 'post',
 		url: `${base}${url}`,
-		data: params,
+		data: params || {},
 	})
 }
 
@@ -13,6 +13,6 @@ export function axiosGet(url,params) {
 	return axios({
 		method: 'get',
 		url: `${base}${url}`,
-		data: params,
+		data: params || {},
 	})
 }

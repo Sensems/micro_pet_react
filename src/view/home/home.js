@@ -5,7 +5,8 @@ import FolderIcon from '@material-ui/icons/Folder';
 import HomeRounded from '@material-ui/icons/HomeRounded';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import DescriptionIcon from '@material-ui/icons/Description';
-import { Route, Link, Switch } from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
+import store from '../../store'
 
 import './home.scss'
 
@@ -15,44 +16,53 @@ class Home extends Component {
 		this.state = {
 			title: '这是首页',
 			NavigationValue: 'index',
-		}
+		};
+		store.subscribe(() => {
+			this.getNavState(store.getState())
+		})
 	}
 
 	render() {
 		let data = this.state;
 		return (
 				<div className="container">
-						<div className="homeBox">
-							<Switch>
-								{
-									this.props.routes.map((route,key) => {
-										return <Route key={key} exact path={route.path} component={route.component}/>
-									})
-								}
-							</Switch>
-						</div>
-					<Link to='/home/article'>hehe</Link>
+					<div className="homeBox">
+						<Switch>
+							{
+								this.props.routes.map((route, key) => {
+									return <Route key={key} exact path={route.path} component={route.component}/>
+								})
+							}
+						</Switch>
+					</div>
 					<div className="bottomNav">
 						<BottomNavigation value={data.NavigationValue} onChange={this.handleChange}>
-							<BottomNavigationAction label="首页" value="index" icon={<HomeRounded />} />
-							<BottomNavigationAction label="文章" value="article" icon={<DescriptionIcon />} />
-							<BottomNavigationAction label="收藏" value="favorite" icon={<FavoriteIcon />} />
-							<BottomNavigationAction label="我的" value="my" icon={<FolderIcon />} />
+							<BottomNavigationAction label="首页" value="index" icon={<HomeRounded/>}/>
+							<BottomNavigationAction label="文章" value="article" icon={<DescriptionIcon/>}/>
+							<BottomNavigationAction label="收藏" value="favorite" icon={<FavoriteIcon/>}/>
+							<BottomNavigationAction label="我的" value="my" icon={<FolderIcon/>}/>
 						</BottomNavigation>
 					</div>
 				</div>
 		)
 	}
 
-	handleChange = (e,newValue) => {
+	handleChange = (e, newValue) => {
 		this.setState({
 			NavigationValue: newValue,
 		});
-		if(newValue === "index") {
+		if (newValue === "index") {
 			newValue = '';
 		}
 		this.props.history.push(`/home/${newValue}`)
+	};
+
+	getNavState = (val) => {
+			this.setState({
+				NavigationValue: val.navState
+			})
 	}
 }
+
 
 export default Home

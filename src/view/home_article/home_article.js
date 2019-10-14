@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import actionCreator from '../../store/actionCreator'
 
 class HomeArticle extends Component {
 	constructor(props) {
@@ -8,11 +10,29 @@ class HomeArticle extends Component {
 		}
 	}
 
+	UNSAFE_componentWillMount () {
+		this.props.changeNavStates();
+	}
+
 	render() {
+		let {changeNavStates} = this.props;
 		return (
-				<h2>这是Article</h2>
+				<div>
+					<h2>这是Article  {this.state.navState}</h2>
+					<button onClick={changeNavStates}>heh</button>
+				</div>
 		)
 	}
 }
 
-export default HomeArticle;
+function mapStateToProps(state) {
+	return {};
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		changeNavStates: () => dispatch(actionCreator.changeNavState('article'))
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeArticle);
