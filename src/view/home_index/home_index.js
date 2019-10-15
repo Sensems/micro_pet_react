@@ -2,6 +2,12 @@ import React, {Component} from 'react'
 import actionCreator from "../../store/actionCreator";
 import {connect} from "react-redux";
 import Swiper from 'swiper/js/swiper.min'
+import SearchBar from '../../components/searchBar'
+import TitleBar from '../../components/titleBar'
+import menu_article from '../../asset/images/article.png'
+import menu_citizendium from '../../asset/images/citizendium.png'
+import menu_equip from '../../asset/images/equip.png'
+import menu_pairing from '../../asset/images/pairing.png'
 import 'swiper/css/swiper.min.css'
 import './home_index.scss'
 
@@ -9,13 +15,19 @@ class HomeIndex extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			swiper:{},
-			carouselList:[],
+			swiper: {},
+			carouselList: [],
+			menuList: [
+				{title: '宠物装备', img:menu_equip},
+				{title: '我的宠物', img:menu_citizendium},
+				{title: '宠物百科', img:menu_article},
+				{title: '宠物配对', img:menu_pairing},
+			]
 		}
+
 	}
 
 	componentDidMount() {
-		this.initSwiper();
 		this.getCarousel();
 	}
 
@@ -28,22 +40,33 @@ class HomeIndex extends Component {
 		let swiperSlides = data.carouselList.map((item) => {
 			return (
 					<div className="swiper-slide" key={item.id}>
-						<img src={'localhost:3030' + item.img_url} alt={item.title}/>
+						<img src={item.img_url} alt={item.title}/>
 					</div>
 			)
 		});
+
+		let memuItems = data.menuList.map((item,key) => {
+			return (
+					<div className="menuItem" key={key}>
+						<img src={item.img} alt=""/>
+						<p>{item.title}</p>
+					</div>
+			)
+		});
+
 		return (
-				<div>
+				<div style={{overflow: 'hidden'}}>
+					<h2 style={{textAlign:'left', paddingLeft:'10px'}}>首页</h2>
+					<SearchBar />
 					<div className="swiper-container">
 						<div className="swiper-wrapper">
 							{swiperSlides}
 						</div>
-
-						<div className="swiper-pagination"></div>
-
-						<div className="swiper-button-prev"></div>
-						<div className="swiper-button-next"></div>
 					</div>
+					<div className="menuBox">
+						{memuItems}
+					</div>
+					<TitleBar title="精选文章" secondTitle="查看更多"/>
 				</div>
 		)
 	}
@@ -52,14 +75,20 @@ class HomeIndex extends Component {
 	initSwiper = () => {
 		this.setState((pevState) => {
 			pevState = new Swiper('.swiper-container', {
-				loop: true,
-				autoplay: true,
-				pagination: {
-					el: '.swiper-pagination',
+				speed:1000,
+				slidesPerView: 'auto',
+				centeredSlides: true,
+				autoplay: {
+					delay:3000,
+					disableOnInteraction:false,
 				},
-				navigation: {
-					nextEl: '.swiper-button-next',
-					prevEl: '.swiper-button-prev',
+				effect : 'coverflow',
+				coverflowEffect: {
+					rotate: 25,
+					stretch: 10,
+					depth: 50,
+					modifier: 2,
+					slideShadows : true
 				},
 			});
 			return {
@@ -75,6 +104,8 @@ class HomeIndex extends Component {
 					if(result.data.length>0 && result.data) {
 						this.setState({
 							carouselList: result.data
+						}, () => {
+							this.initSwiper();
 						})
 					}
 				});
