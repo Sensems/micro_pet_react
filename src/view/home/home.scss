@@ -4,9 +4,9 @@
   //bottom: 0;
   //left: 0;
   //right: 0;
-  text-align: center;
+  //text-align: center;
   .bottomNav {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
@@ -16,6 +16,7 @@
     animation-duration: 1s;
     animation-fill-mode: both;
     animation-name: fadeRoute;
+    padding-bottom: 56px;
   }
 }
 @keyframes fadeRoute {

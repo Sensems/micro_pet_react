@@ -4,6 +4,10 @@ import {connect} from "react-redux";
 import Swiper from 'swiper/js/swiper.min'
 import SearchBar from '../../components/searchBar'
 import TitleBar from '../../components/titleBar'
+import RecommendStyleOne from '../../components/recommend_style/recommend_style_one'
+import RecommendStyleTwo from '../../components/recommend_style/recommend_style_two'
+import RecommendStyleThree from '../../components/recommend_style/recommend_style_three'
+import StoryList from '../../components/storyList'
 import menu_article from '../../asset/images/article.png'
 import menu_citizendium from '../../asset/images/citizendium.png'
 import menu_equip from '../../asset/images/equip.png'
@@ -22,7 +26,29 @@ class HomeIndex extends Component {
 				{title: '我的宠物', img:menu_citizendium},
 				{title: '宠物百科', img:menu_article},
 				{title: '宠物配对', img:menu_pairing},
-			]
+			],
+			equipOne :{
+				title: '有什么你养过的宠物让你有心里阴影让你这辈子再也不想养的!',
+				commentNum: '20.4k',
+				genre: '猫猫',
+				time: '2小时前'
+			},
+			equipTwo :{
+				title: '照顾猫咪有什么小窍门呢?你想不想知道!',
+				commentNum: '24.4k',
+				genre: '猫猫',
+				time: '10分钟前',
+				img_url: menu_article
+			},
+			equipThree : {
+				title: '照顾猫咪有什么小窍门呢?你想不想知道!',
+				commentNum: '24.4k',
+				genre: '猫猫',
+				time: '10分钟前',
+				imgList: [
+					menu_equip, menu_equip, menu_equip
+				]
+			}
 		}
 
 	}
@@ -31,9 +57,9 @@ class HomeIndex extends Component {
 		this.getCarousel();
 	}
 
-	componentWillUnmount() {
+	/*componentWillUnmount() {
 		this.state.swiper.destroy()
-	}
+	}*/
 
 	render() {
 		let data = this.state;
@@ -56,9 +82,9 @@ class HomeIndex extends Component {
 
 		return (
 				<div style={{overflow: 'hidden'}}>
-					<h2 style={{textAlign:'left', paddingLeft:'10px'}}>首页</h2>
+					<h1 style={{textAlign:'left', paddingLeft:'10px',fontFamily:'Microsoft YaHei UI Light'}}>首页</h1>
 					<SearchBar />
-					<div className="swiper-container">
+					<div className="swiper-container carousel">
 						<div className="swiper-wrapper">
 							{swiperSlides}
 						</div>
@@ -66,7 +92,13 @@ class HomeIndex extends Component {
 					<div className="menuBox">
 						{memuItems}
 					</div>
+					<TitleBar title="我们的故事" secondTitle="查看更多"/>
+					<StoryList />
+
 					<TitleBar title="精选文章" secondTitle="查看更多"/>
+					<RecommendStyleOne data={data.equipOne} />
+					<RecommendStyleTwo data={data.equipTwo} />
+					<RecommendStyleThree data={data.equipThree} />
 				</div>
 		)
 	}
@@ -100,18 +132,22 @@ class HomeIndex extends Component {
 	//获取轮播图
 	getCarousel = () => {
 		React.axiosPost('/index/getAllCarousel')
-				.then(result => {
-					if(result.data.length>0 && result.data) {
-						this.setState({
-							carouselList: result.data
-						}, () => {
-							this.initSwiper();
-						})
-					}
-				});
+			.then(result => {
+				if(result.data.length>0 && result.data) {
+					this.setState({
+						carouselList: result.data
+					}, () => {
+						this.initSwiper();
+					})
+				}
+			});
 	};
 
 
+}
+
+function mapStateToProps() {
+	return {};
 }
 
 function mapDispatchToProps(dispatch) {
@@ -120,4 +156,4 @@ function mapDispatchToProps(dispatch) {
 	}
 }
 
-export default connect(mapDispatchToProps)(HomeIndex);
+export default connect(mapStateToProps,mapDispatchToProps)(HomeIndex);
