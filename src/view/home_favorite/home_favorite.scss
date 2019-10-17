@@ -1,0 +1,20 @@
+.hintMsg,.loginMsg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  color:#9e9c9d;
+  font-size: 18px;
+  >p {
+    font-weight: bold;
+  }
+  .loginBtn {
+    //background: linear-gradient(45deg, #f8c10e 57%, #db6200 93%);
+    color: white;
+    background: skyblue;
+    font-size: 16px;
+  }
+}

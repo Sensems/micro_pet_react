@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import actionCreator from '../../store/actionCreator'
 import Swiper from 'swiper/js/swiper.min'
-import 'swiper/css/swiper.min.css'
+// import 'swiper/css/swiper.min.css'
 import './home_article.scss'
 import DynamicState from './dynamic_state'
 
@@ -29,7 +29,7 @@ class HomeArticle extends Component {
 					<div className="swiper-container title-thumbs">
 						<div className="swiper-wrapper">
 							<div className="swiper-slide">动态</div>
-							<div className="swiper-slide">专题</div>
+							{/*<div className="swiper-slide">专题</div>*/}
 						</div>
 					</div>
 					<div className="swiper-container content">

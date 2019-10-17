@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import FolderIcon from '@material-ui/icons/Folder';
+import Face from '@material-ui/icons/Face';
 import HomeRounded from '@material-ui/icons/HomeRounded';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import DescriptionIcon from '@material-ui/icons/Description';
@@ -40,7 +40,7 @@ class Home extends Component {
 							<BottomNavigationAction label="首页" value="index" icon={<HomeRounded/>}/>
 							<BottomNavigationAction label="文章" value="article" icon={<DescriptionIcon/>}/>
 							<BottomNavigationAction label="收藏" value="favorite" icon={<FavoriteIcon/>}/>
-							<BottomNavigationAction label="我的" value="my" icon={<FolderIcon/>}/>
+							<BottomNavigationAction label="我的" value="my" icon={<Face/>}/>
 						</BottomNavigation>
 					</div>
 				</div>

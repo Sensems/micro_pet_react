@@ -1,0 +1,85 @@
+.user {
+  padding: 20px 15px;
+  .userInfo {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 40px;
+    >img {
+      width: 70px;
+      height: 70px;
+      border-radius: 5px;
+      float: left;
+      margin-right: 15px;
+    }
+    >p {
+      margin: 0;
+    }
+    .username {
+      padding-top: 4px;
+      font-size: 19px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .describe {
+      color: #888687;
+      font-size: 13px;
+    }
+  }
+  .data {
+    display: flex;
+    .dataItem {
+      flex: 1;
+      text-align: center;
+      >p {
+        margin: 0;
+        font-size: 22px;
+        font-weight: bolder;
+        font-family: "Microsoft YaHei UI";
+      }
+      >span {
+        font-size: 13px;
+        color: #888687;
+      }
+    }
+  }
+  .myStuff {
+    margin-top: 25px;
+    display: flex;
+    height: 120px;
+    .stuffItem {
+      flex: 1;
+      text-align: center;
+      >img{
+        width: 96%;
+        height: 90%;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+.tabs {
+  height: 20%;
+  box-sizing: border-box;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  .swiper-wrapper {
+    padding-left: 20px;
+  }
+  .swiper-slide {
+    text-align: center;
+    line-height: 30px;
+    width: 50px !important;
+    transition: all .3s;
+    height: 100%;
+  }
+  .swiper-slide-thumb-active {
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transform: scale(1.5);
+    font-weight: bold;
+    color: #f8c10e;
+  }
+}

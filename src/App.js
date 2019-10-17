@@ -9,7 +9,7 @@ let style = {
 		position: 'fixed',
 		top: '0',
 		left: '0',
-		bottom: '0',
+		bottom: '54px',
 		right: '0',
 		background: 'rgb(255,255,255,.6)',
 	},

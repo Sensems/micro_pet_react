@@ -82,7 +82,7 @@ class HomeIndex extends Component {
 
 		return (
 				<div style={{overflow: 'hidden'}}>
-					<h1 style={{textAlign:'left', paddingLeft:'10px',fontFamily:'Microsoft YaHei UI Light'}}>首页</h1>
+					<h1 style={{textAlign:'left', paddingLeft:'10px'}}>首页</h1>
 					<SearchBar />
 					<div className="swiper-container carousel">
 						<div className="swiper-wrapper">

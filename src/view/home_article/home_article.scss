@@ -2,7 +2,7 @@
   //margin-left: 20px;
   height: 20%;
   box-sizing: border-box;
-  padding: 10px 0;
+  padding: 20px 0 10px 15px;
   margin-bottom: 20px;
   .swiper-wrapper {
     padding-left: 20px;
@@ -21,19 +21,50 @@
   }
 }
 
+.dynamicList {
+  margin: 25px 0;
+}
+
 .petPlusList {
+  margin: 20px 0;
+  padding-bottom: 15px;
+  padding-left: 20px;
   .swiper-slide {
     width: 35%;
+    border-radius: 5px;
+    box-shadow: 1px 3px 14px -4px #b5b5b5;
     .petPlusItem {
-      height: 120px;
-      border-radius: 5px;
+      position: relative;
+      height: 110px;
       text-align: center;
-      .petPlusTitle{
+      padding: 10px;
+      p {
         margin: 0;
       }
+      .petPlusTitle {
+        font-weight: bold;
+      }
+      .tip {
+        margin-top: 4px;
+        font-size: 13px;
+        color: #c6c6c6;
+      }
+      >span {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        line-height: 42px;
+        border-radius: 50%;
+        background: linear-gradient(#f8c10e,#db6200);
+        color: #fff;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%,50%);
+      }
       >img {
-        height: 60px;
-        width: 60px;
+        height: 45px;
+        width: 45px;
         border-radius: 50%;
       }
     }
