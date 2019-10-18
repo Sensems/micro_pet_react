@@ -29,7 +29,7 @@ class HomeFavorite extends Component {
 					<div className="loginMsg">
 						<PersonPin style={{fontSize:'80px'}} />
 						<p>请先登录哦!</p>
-						<Button variant="contained" size="medium" type="primary" className="loginBtn" onClick={this.goToLogin}>
+						<Button variant="contained" size="medium" className="loginBtn" onClick={this.goToLogin}>
 							登录
 						</Button>
 					</div>

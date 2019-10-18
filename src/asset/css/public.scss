@@ -11,7 +11,7 @@ $tintFontColor: #918f90;
 .searchBar {
   padding: 0 $crosswisePadding;
   .searchBox {
-    background: #f6f4f5;
+    background: #eceaeb;
     border-radius: 6px;
     color: #595959;
     height: 36px;
@@ -280,5 +280,31 @@ $tintFontColor: #918f90;
         margin-right: 8px;
       }
     }
+  }
+}
+
+.headerOne {
+  position: fixed;
+  top: 0;
+  height: 40px;
+  line-height: 40px;
+  width: 100%;
+  border-bottom: 1px solid $borderBottomColor;
+  background: #fff;
+  z-index: 99;
+  .leftBtn {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    width: 50px;
+    text-align: center;
+    transform: translate(-50%,-50%);
+    >svg {
+      transform: translateY(7px);
+    }
+  }
+  >p {
+    text-align: center;
+    margin: 0;
   }
 }

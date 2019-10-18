@@ -3,7 +3,7 @@ import Chat from '@material-ui/icons/Chat';
 
 const recommend_style_three = (props) => {
 	return (
-			<div className='recommend_style_three'>
+			<div className='recommend_style_three' onClick={props.onClick}>
 				<p>{props.data.title}</p>
 				<div className="imgList">
 					<div className="imgWrap"><img src={props.data.imgList[0]} alt=""/></div>

@@ -1,0 +1,77 @@
+.detail {
+  padding: 15px;
+  .userInfo {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 15px;
+    >img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      float: left;
+      margin-right: 10px;
+    }
+    >p {
+      margin: 0;
+    }
+    .username {
+      font-size: 16px;
+      margin: 4px 0;
+      font-weight: bold;
+    }
+    .releaseTime {
+      color: #918F90;
+      font-size: 13px;
+    }
+    .operation {
+      position: absolute;
+      display: inline-block;
+      line-height: 30px;
+      width: 40px;
+      text-align: center;
+      right: 0;
+      top: 50%;
+      color: white;
+      transform: translateY(-50%);
+      background: skyblue;
+      font-size: 14px;
+      border-radius: 5px;
+      font-weight: bold;
+      padding: 0 6px;
+    }
+  }
+  .title {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ECECEC;
+  }
+  .detailContent {
+    img {
+      font-size: 16px;
+      border-radius: 5px;
+    }
+  }
+}
+
+.actionBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #ECECEC;
+  height: 46px;
+  line-height: 41px;
+  >input {
+    width: 65%;
+    height: 30px;
+    border: 0;
+    border-radius: 3px;
+    background: #edebec;
+    outline: none;
+    margin-left: 15px;
+    padding-left: 8px;
+    color: #454952;
+  }
+}

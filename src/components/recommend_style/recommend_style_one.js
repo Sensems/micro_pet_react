@@ -3,7 +3,7 @@ import Chat from '@material-ui/icons/Chat';
 
 const recommend_style_one = (props) => {
 	return (
-			<div className='recommend_style_one'>
+			<div className='recommend_style_one' onClick={props.onClick}>
 				<p>{props.data.title}</p>
 				<div className='tip'>
 					<Chat style={{marginBottom:'-8px'}} />

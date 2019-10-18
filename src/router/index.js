@@ -1,5 +1,9 @@
 import {lazy} from 'react'
 import Login from '../view/login/login'
+import ArticleDetails from '../view/article_details/article_details'
+import StoryList from '../view/story_list/story_list'
+import Search from '../view/search/search'
+
 const Home = lazy(() => import('../view/home/home'));
 	const HomeIndex = lazy(() => import('../view/home_index/home_index'));
 	const HomeArticle = lazy(() => import('../view/home_article/home_article'));
@@ -34,6 +38,21 @@ const routes = [
 				component:HomeMy
 			},
 		]
+	},
+	{
+		path:"/articleDetails/:articleId",
+		component:ArticleDetails,
+		exact:true
+	},
+	{
+		path:"/storyList",
+		component:StoryList,
+		exact:true
+	},
+	{
+		path:"/search",
+		component:Search,
+		exact:true
 	},
 ];
 

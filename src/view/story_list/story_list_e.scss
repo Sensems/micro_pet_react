@@ -1,0 +1,28 @@
+.pullToRefresh {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+}
+.storyAllList {
+  padding: 20px 0;
+  .storyAllItem {
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto 20px;
+  }
+  .tip {
+    font-size: 16px;
+    color: #c6c4c5;
+    padding: 0 6px;
+    svg {
+      margin-bottom: -5px;
+      margin-right: 3px;
+    }
+    >span{
+      margin-right: 15px;
+    }
+  }
+}

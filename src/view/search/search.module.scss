@@ -1,0 +1,17 @@
+.search {
+  padding-top: 40px;
+  text-align: center;
+  overflow: hidden;
+  .searchBox {
+    margin-top: 15px;
+    >input {
+      padding-left: 10px;
+      width: 80%;
+      height: 30px;
+      border: none;
+      outline: none;
+      border-radius: 3px;
+      background: #e2e0e1;
+    }
+  }
+}

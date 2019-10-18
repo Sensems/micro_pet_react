@@ -82,8 +82,8 @@ class HomeIndex extends Component {
 
 		return (
 				<div style={{overflow: 'hidden'}}>
-					<h1 style={{textAlign:'left', paddingLeft:'10px'}}>首页</h1>
-					<SearchBar />
+					<h1 style={{textAlign:'left', paddingLeft:'10px'}} onClick={this.goOnDetails}>首页</h1>
+					<SearchBar onClick={this.goOnSearch} />
 					<div className="swiper-container carousel">
 						<div className="swiper-wrapper">
 							{swiperSlides}
@@ -92,11 +92,11 @@ class HomeIndex extends Component {
 					<div className="menuBox">
 						{memuItems}
 					</div>
-					<TitleBar title="我们的故事" secondTitle="查看更多"/>
+					<TitleBar title="我们的故事" secondTitle="查看更多" url="/storyList"/>
 					<StoryList />
 
 					<TitleBar title="精选文章" secondTitle="查看更多"/>
-					<RecommendStyleOne data={data.equipOne} />
+					<RecommendStyleOne data={data.equipOne} onClick={this.goOnDetails} />
 					<RecommendStyleTwo data={data.equipTwo} />
 					<RecommendStyleThree data={data.equipThree} />
 				</div>
@@ -143,6 +143,13 @@ class HomeIndex extends Component {
 			});
 	};
 
+	goOnDetails = () => {
+		this.props.history.push('/articleDetails/1')
+	}
+
+	goOnSearch = () => {
+		this.props.history.push('/search')
+	}
 
 }
 
