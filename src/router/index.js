@@ -35,7 +35,8 @@ const routes = [
 			},
 			{
 				path:"/home/my",
-				component:HomeMy
+				component:HomeMy,
+				auth: true
 			},
 		]
 	},

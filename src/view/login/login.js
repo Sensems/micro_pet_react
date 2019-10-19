@@ -136,6 +136,7 @@ class Login extends Component{
 					is_loading: false,
 					login_title:'登录'
 				});
+				React.$setLocalStorage('userInfo',result.data);
 				this.props.history.push('/home');
 			}else {
 				this.setState({

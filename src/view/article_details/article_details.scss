@@ -1,5 +1,6 @@
 .detail {
-  padding: 15px;
+  padding: 55px 15px 15px;
+
   .userInfo {
     position: relative;
     overflow: hidden;
@@ -16,7 +17,7 @@
     }
     .username {
       font-size: 16px;
-      margin: 4px 0;
+      margin: 8px 0;
       font-weight: bold;
     }
     .releaseTime {
@@ -62,16 +63,41 @@
   right: 0;
   border-top: 1px solid #ECECEC;
   height: 46px;
-  line-height: 41px;
+  line-height: 43px;
+  display: flex;
+  justify-content: space-around;
+  justify-items: center;
+  align-items: center;
   >input {
-    width: 65%;
     height: 30px;
     border: 0;
     border-radius: 3px;
     background: #edebec;
     outline: none;
-    margin-left: 15px;
+    //margin-left: 15px;
     padding-left: 8px;
     color: #454952;
+    transition: all .4s;
+  }
+  >button {
+    //transform: translateX(-30%);
+    padding: 4px 16px;
+    height: 32px;
+    box-shadow: none;
+  }
+  .tip {
+    font-size: 14px;
+    color: #c6c4c5;
+    padding: 0 6px;
+    width: 38%;
+    overflow: hidden;
+    text-align: center;
+    svg {
+      margin-bottom: -5px;
+      margin-right: 3px;
+    }
+    >span{
+      margin-right: 5px;
+    }
   }
 }

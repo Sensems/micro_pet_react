@@ -10,29 +10,29 @@ class HomeFavorite extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			hintMsg: ''
+			hintMsg: '',
+			isLogin: false
 		}
 	}
 
 	UNSAFE_componentWillMount() {
-		this.props.changeNavStates()
+		this.props.changeNavStates();
+		if(React.$getLocalStorage('userInfo')) {
+			this.setState({
+				isLogin: true
+			})
+		}
 	}
 
 	render() {
+		let data = this.state;
+		let hint_one = <div className="hintMsg"><Class style={{fontSize:'80px'}} /><p>你还没有任何收藏哦!</p></div>;
+		let hint_two = <div className="loginMsg"><PersonPin style={{fontSize:'80px'}} /><p>请先登录哦!</p><Button variant="contained" size="medium" className="loginBtn" onClick={this.goToLogin}>登录</Button></div>;
 		return (
 				<div>
 					<h1 style={{textAlign:'left', paddingLeft:'10px'}}>我的收藏</h1>
-					{/*<div className="hintMsg">
-						<Class style={{fontSize:'80px'}} />
-						<p>你还没有任何收藏哦!</p>
-					</div>*/}
-					<div className="loginMsg">
-						<PersonPin style={{fontSize:'80px'}} />
-						<p>请先登录哦!</p>
-						<Button variant="contained" size="medium" className="loginBtn" onClick={this.goToLogin}>
-							登录
-						</Button>
-					</div>
+					{data.isLogin || hint_two}
+					{data.isLogin && hint_one}
 				</div>
 		)
 	}

@@ -5,7 +5,7 @@ import Face from '@material-ui/icons/Face';
 import HomeRounded from '@material-ui/icons/HomeRounded';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import DescriptionIcon from '@material-ui/icons/Description';
-import {Route, Switch} from "react-router-dom";
+import {Route, Switch, Redirect} from "react-router-dom";
 import store from '../../store'
 
 import './home.scss'
@@ -16,10 +16,19 @@ class Home extends Component {
 		this.state = {
 			title: '这是首页',
 			NavigationValue: 'index',
+			isLogin: false,
 		};
 		store.subscribe(() => {
 			this.getNavState(store.getState())
 		})
+	}
+
+	UNSAFE_componentWillMount() {
+		if(React.$getLocalStorage('userInfo') !== null) {
+			this.setState({
+				isLogin: true
+			})
+		}
 	}
 
 	render() {
@@ -30,6 +39,9 @@ class Home extends Component {
 						<Switch>
 							{
 								this.props.routes.map((route, key) => {
+									if(route.auth && !data.isLogin) {
+										return <Redirect to={{pathname: '/',state: { from: this.props.location }}} />
+									}
 									return <Route key={key} exact path={route.path} component={route.component}/>
 								})
 							}

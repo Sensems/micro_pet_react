@@ -6,10 +6,15 @@ import * as serviceWorker from './serviceWorker';
 import {axiosGet,axiosPost} from './api/http';
 import { Provider } from 'react-redux'
 import store from './store'
+import { getLocalStorage, setLocalStorage } from './asset/js/localStorage'
 
 //定义全局axios方法
 React.axiosGet = axiosGet;
 React.axiosPost = axiosPost;
+
+//定义全局localStorage方法
+React.$getLocalStorage = getLocalStorage;
+React.$setLocalStorage = setLocalStorage;
 
 ReactDOM.render(
 		<Provider store={store}>
