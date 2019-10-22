@@ -1,0 +1,10 @@
+.hotCommodity {
+  .swiper-slide {
+    width: 95%;
+  }
+}
+
+.MuiTab-textColorInherit {transition: all .3s;}
+.MuiTab-textColorInherit.Mui-selected {
+  transform: scale(1.5);
+}

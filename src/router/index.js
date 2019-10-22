@@ -7,7 +7,8 @@ import Search from '../view/search/search'
 const Home = lazy(() => import('../view/home/home'));
 	const HomeIndex = lazy(() => import('../view/home_index/home_index'));
 	const HomeArticle = lazy(() => import('../view/home_article/home_article'));
-	const HomeFavorite = lazy(() => import('../view/home_favorite/home_favorite'));
+	// const HomeFavorite = lazy(() => import('../view/home_favorite/home_favorite'));
+	const HomeStore = lazy(() => import('../view/home_favorite/home_store'));
 	const HomeMy = lazy(() => import('../view/home_my/home_my'));
 
 
@@ -31,7 +32,7 @@ const routes = [
 			},
 			{
 				path:"/home/favorite",
-				component:HomeFavorite
+				component:HomeStore
 			},
 			{
 				path:"/home/my",

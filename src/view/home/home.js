@@ -59,6 +59,7 @@ class Home extends Component {
 		)
 	}
 
+	//导航栏切换页面
 	handleChange = (e, newValue) => {
 		this.setState({
 			NavigationValue: newValue,
@@ -69,6 +70,7 @@ class Home extends Component {
 		this.props.history.push(`/home/${newValue}`)
 	};
 
+	//获取导航栏状态
 	getNavState = (val) => {
 			this.setState({
 				NavigationValue: val.navState

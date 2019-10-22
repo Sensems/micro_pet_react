@@ -1,6 +1,7 @@
 import React, {Suspense} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import routes from './router/index'
 import './App.css'
@@ -29,6 +30,7 @@ function App() {
   		<div className="animate-route">
 				<Router>
 					<Suspense fallback={fallbackBox}>
+						<CssBaseline />
 						<Switch>
 						{
 							routes.map((router,index)=>{

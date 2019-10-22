@@ -3,8 +3,6 @@ import './home_my.scss'
 import {connect} from 'react-redux'
 import myStuffBg from '../../asset/images/background_1.png'
 import actionCreator from "../../store/actionCreator";
-import Swiper from 'swiper/js/swiper.min'
-import 'swiper/css/swiper.min.css'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -20,14 +18,33 @@ import RecommendStyleTwo from '../../components/recommend_style/recommend_style_
 import RecommendStyleThree from '../../components/recommend_style/recommend_style_three'
 import menu_article from "../../asset/images/article.png";
 import menu_equip from "../../asset/images/equip.png";
+import default_avatar from '../../asset/images/default_avatar_2.jpg'
+import SwipeableViews from 'react-swipeable-views';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import { withStyles } from '@material-ui/core/styles';
+
+const StyledTabs = withStyles({
+	indicator: {
+		display: 'flex',
+		justifyContent: 'center',
+		backgroundColor: 'transparent',
+		height: '3px',
+		'& > div': {
+			maxWidth: 40,
+			width: '100%',
+			backgroundColor: '#f8c10e',
+			borderRadius: '3px'
+		},
+	},
+})(props => <Tabs {...props} TabIndicatorProps={{ children: <div /> }} />);
 
 class HomeMy extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			tabVal: 0,
-			tabs: null,
-			tab: null,
+			swipeIndex: 0,
+			userInfo: null,
 			optionList: [
 				{
 					title: '我的好友',
@@ -70,10 +87,17 @@ class HomeMy extends Component {
 
 	UNSAFE_componentWillMount() {
 		this.props.changeNavStates();
+		if(React.$getLocalStorage('userInfo')) {
+			this.setState({
+				userInfo: React.$getLocalStorage('userInfo')
+			})
+		}else {
+			this.props.history.push('/')
+		}
 	}
 
 	componentDidMount() {
-		this.initSwiper();
+		// this.initSwiper();
 	}
 
 	render() {
@@ -82,21 +106,21 @@ class HomeMy extends Component {
 				<div>
 					<div className="user">
 						<div className="userInfo">
-							<img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3442060684,767791650&fm=26&gp=0.jpg" alt=""/>
-							<p className="username">范特西</p>
-							<p className="describe">我就是我,不一样的烟火</p>
+							<img src={data.userInfo.avatar || default_avatar} alt=""/>
+							<p className="username">{data.userInfo.username}</p>
+							<p className="describe">{data.userInfo.describe || ''}</p>
 						</div>
 						<div className="data">
 							<div className="dataItem">
-								<p>239</p>
+								<p>{data.userInfo.fansNum || 0}</p>
 								<span>粉丝</span>
 							</div>
 							<div className="dataItem">
-								<p>239</p>
+								<p>{data.userInfo.dynamicNum || 0}</p>
 								<span>动态</span>
 							</div>
 							<div className="dataItem">
-								<p>239</p>
+								<p>{data.userInfo.articleNum || 0}</p>
 								<span>文章</span>
 							</div>
 						</div>
@@ -111,66 +135,51 @@ class HomeMy extends Component {
 					</div>
 
 					<div className="other">
-						<div className="swiper-container tabs">
-							<div className="swiper-wrapper">
-								<div className="swiper-slide">收藏</div>
-								<div className="swiper-slide">选项</div>
+						<StyledTabs value={data.swipeIndex} onChange={this.handleTabChange}>
+							<Tab disableFocusRipple={true} disableRipple={true} label="收藏" />
+							<Tab disableFocusRipple={true} disableRipple={true} label="选项" />
+						</StyledTabs>
+						<SwipeableViews animateHeight index={data.swipeIndex} onChangeIndex={this.handleSwipeChange}>
+							<div>
+								<RecommendStyleOne data={data.equipOne} />
+								<RecommendStyleTwo data={data.equipTwo} />
+								<RecommendStyleThree data={data.equipThree} />
 							</div>
-						</div>
-						<div className="swiper-container tab">
-							<div className="swiper-wrapper">
-								<div className="swiper-slide">
-									<RecommendStyleOne data={data.equipOne} />
-									<RecommendStyleTwo data={data.equipTwo} />
-									<RecommendStyleThree data={data.equipThree} />
-								</div>
-								<div className="swiper-slide">
-									<List>
-										{data.optionList.map((item,key) => {
-											const labelId = `checkbox-list-label-${key}`;
-											return (
-													<ListItem key={key} role={undefined} button>
-														<ListItemIcon>
-															{item.firstIcon}
-														</ListItemIcon>
-														<ListItemText id={labelId} primary={item.title} />
-														<ListItemSecondaryAction>
-															<KeyboardArrowRight />
-														</ListItemSecondaryAction>
-													</ListItem>
-											);
-										})}
-									</List>
-								</div>
+							<div>
+								<List>
+									{data.optionList.map((item,key) => {
+										const labelId = `checkbox-list-label-${key}`;
+										return (
+												<ListItem key={key} role={undefined} button>
+													<ListItemIcon>
+														{item.firstIcon}
+													</ListItemIcon>
+													<ListItemText id={labelId} primary={item.title} />
+													<ListItemSecondaryAction>
+														<KeyboardArrowRight />
+													</ListItemSecondaryAction>
+												</ListItem>
+										);
+									})}
+								</List>
 							</div>
-						</div>
+						</SwipeableViews>
 					</div>
 				</div>
 		)
 	}
 
-	initSwiper = () => {
+	handleTabChange = (event, value) => {
 		this.setState({
-			tabs: new Swiper('.tabs', {
-				spaceBetween: 10,
-				freeMode: false,
-				allowSlideNext : false,
-				allowSlidePrev : false,
-				watchSlidesVisibility: true,
-				watchSlidesProgress: true,
-			}),
-		}, () => {
-			this.setState({
-				tab: new Swiper('.tab', {
-					spaceBetween: 10,
-					// allowTouchMove: false,
-					thumbs: {
-						swiper: this.state.tabs
-					}
-				})
-			})
-		});
-	}
+			swipeIndex: value
+		})
+	};
+
+	handleSwipeChange = index => {
+		this.setState({
+			swipeIndex: index
+		})
+	};
 
 }
 
