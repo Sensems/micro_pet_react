@@ -57,10 +57,6 @@ class HomeIndex extends Component {
 		this.getCarousel();
 	}
 
-	/*componentWillUnmount() {
-		this.state.swiper.destroy()
-	}*/
-
 	render() {
 		let data = this.state;
 		let swiperSlides = data.carouselList.map((item) => {

@@ -15,7 +15,6 @@ import Tab from '@material-ui/core/Tab';
 import { withStyles } from '@material-ui/core/styles';
 import ProductList from '../../components/productList/productList';
 import {connect} from 'react-redux'
-
 import 'swiper/css/swiper.min.css'
 import actionCreator from "../../store/actionCreator";
 
@@ -40,6 +39,7 @@ class HomeStore extends React.Component{
 		this.state = {
 			swiper: null,
 			swipeIndex: 0,
+			productListData:[],
 			classifyList:[
 				{title:'宠物用品', img:box},
 				{title:'宠物食品', img:bowl},
@@ -48,39 +48,20 @@ class HomeStore extends React.Component{
 				{title:'宠物医院', img:hospital},
 				{title:'宠物寄养', img:heart},
 			],
-			tabHeaderStyle: {},
-			isGetToHeight: false,
 		}
 	}
 
+
 	UNSAFE_componentWillMount() {
 		this.props.changeNavStates();
+
 	}
 
 	componentDidMount() {
 		this.initSwiper();
-		console.log(this.tabHeader.offsetTop);
-		window.addEventListener("scroll", evt => {
-			console.log(document.documentElement.scrollTop);
-			if(this.tabHeader.offsetTop <= document.documentElement.scrollTop) {
-				this.setState({
-					tabHeaderStyle:{
-						position:'fixed',
-						width:'100%',
-						height:'48px',
-						top:'0',
-						backgroundColor:'#fff',
-						zIndex:'99',
-						margin:'0'
-					}
-				})
-			}else {
-				this.setState({
-					tabHeaderStyle:{}
-				})
-			}
-		})
+		this.getData();
 	}
+
 
 	render() {
 		let data = this.state;
@@ -116,22 +97,23 @@ class HomeStore extends React.Component{
 							</div>
 						</div>
 					</div>
-					<div ref={el => this.tabHeader =el} style={data.tabHeaderStyle} className={style.tabHeader}>
-						<StyledTabs value={data.swipeIndex} onChange={this.handleTabChange}>
-							<Tab disableFocusRipple={true} disableRipple={true} label="宠粮" />
-							<Tab disableFocusRipple={true} disableRipple={true} label="玩具" />
-							<Tab disableFocusRipple={true} disableRipple={true} label="衣服" />
-						</StyledTabs>
-					</div>
+						<div className={style.tabHeader}>
+							<StyledTabs value={data.swipeIndex} onChange={this.handleTabChange}>
+								<Tab disableFocusRipple={true} disableRipple={true} label="宠粮" />
+								<Tab disableFocusRipple={true} disableRipple={true} label="玩具" />
+								<Tab disableFocusRipple={true} disableRipple={true} label="衣服" />
+							</StyledTabs>
+						</div>
 					<SwipeableViews animateHeight index={data.swipeIndex} onChangeIndex={this.handleSwipeChange}>
-						<div><ProductList /></div>
-						<div><ProductList /></div>
-						<div><ProductList /></div>
+						<div><ProductList history={this.props.history} data={data.productListData}/></div>
+						<div><ProductList history={this.props.history} data={data.productListData}/></div>
+						<div><ProductList history={this.props.history} data={data.productListData}/></div>
 					</SwipeableViews>
 				</div>
 		)
 	}
 
+	//初始化swiper
 	initSwiper = () => {
 		this.setState({
 			swiper: new Swiper('.hotCommodity', {
@@ -144,17 +126,30 @@ class HomeStore extends React.Component{
 		})
 	};
 
+	//点击tab选项时
 	handleTabChange = (event, value) => {
 		this.setState({
 			swipeIndex: value
 		})
 	};
 
+	//滑动tab时
 	handleSwipeChange = index => {
 		this.setState({
 			swipeIndex: index
 		})
 	};
+
+	//获取数据
+	getData = () => {
+		React.axiosPost('/api/getProductList')
+				.then(response => {
+					this.setState({
+						productListData:response.data
+					})
+				})
+	}
+
 
 }
 

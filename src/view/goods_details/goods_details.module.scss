@@ -1,0 +1,141 @@
+.goodsDetailsWrap {
+  background-color: #f1f1f1;
+  font-family: "Microsoft YaHei UI";
+  .goodsCarousel {
+    .slide {
+      height: 18rem;
+      background: #f8c10e;
+      >img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+  .baseInfo {
+    padding: 1rem .5rem;
+    position: relative;
+    >div {
+      margin-bottom: .5rem;
+    }
+    .price {
+      font-size: 26px;
+      color: #eb8b0d;
+      font-weight: bold;
+      >i{
+        font-size: 16px;
+        margin-right: .2rem;
+      }
+      .markPrice {
+        text-decoration:line-through;
+        color:#696969;
+        font-size: 16px;
+        font-weight: normal;
+      }
+    }
+    .title{
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .describe{
+      color: #696969;
+      font-size: 13px;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tip{
+      border: 1px solid crimson;
+      border-radius: 10px;
+      color: crimson;
+      font-size: 12px;
+      padding: .1rem .5rem;
+    }
+    .favorite {
+      position: absolute;
+      right: .5rem;
+      top: 1rem;
+      height: 30px;
+      line-height: 44px;
+      width: 30px;
+      border-radius: 50%;
+      text-align: center;
+      background-color: #ececec;
+      >svg{
+        font-size: 22px;
+      }
+    }
+  }
+  .discountCouponList {
+    line-height: 2.5rem;
+    .discountItem {
+      background: crimson;
+      border-left: 2px dotted #ffffff;
+      border-right: 2px dotted #ffffff;
+      margin-left: 6px;
+      color: #fff;
+      padding: .2rem .5rem;
+    }
+  }
+  .goodsDetailFooter {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3.2rem;
+    background: #ffffff;
+    border-top: 1px solid #e8e8e8;
+    overflow: hidden;
+    .FooterLeft {
+      float: left;
+      display: flex;
+      width: 45%;
+      padding: .2rem 0;
+      box-sizing: border-box;
+      line-height: 1.2;
+      .leftItem {
+        flex: 1;
+        text-align: center;
+        margin-left: .4rem;
+        height: 100%;
+        width: 3rem;
+        >p{
+          margin: 0;
+        }
+        >svg {
+          font-size: 25px;
+        }
+      }
+    }
+    .FooterRight {
+      float: left;
+      width: 55%;
+      text-align: center;
+      height: 100%;
+      .buy {
+        display: inline-block;
+        width: 85%;
+        height: 2rem;
+        line-height: 2rem;
+        border-radius: 1rem;
+        overflow: hidden;
+        transform: translateY(.6rem);
+        >span {
+          width: 50%;
+          display: inline-block;
+          text-align: center;
+          color: #ffffff;
+        }
+        span:first-child {
+          background: linear-gradient(to right,#eeca7a,#e0b453);
+        }
+        span:last-child {
+          background: linear-gradient(to right,#f64c2b,#da1015);
+        }
+      }
+    }
+  }
+}
+.baseStyle {
+  background-color: #ffffff;
+  margin-bottom: .6rem;
+}

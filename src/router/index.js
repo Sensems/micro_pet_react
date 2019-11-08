@@ -3,6 +3,7 @@ import Login from '../view/login/login'
 import ArticleDetails from '../view/article_details/article_details'
 import StoryList from '../view/story_list/story_list'
 import Search from '../view/search/search'
+import GoodsDetails from '../view/goods_details/goods_details'
 
 const Home = lazy(() => import('../view/home/home'));
 	const HomeIndex = lazy(() => import('../view/home_index/home_index'));
@@ -55,6 +56,11 @@ const routes = [
 		path:"/search",
 		component:Search,
 		exact:true
+	},
+	{
+		path:"/goodsDetails/:goodId",
+		component:GoodsDetails,
+		// exact:true
 	},
 ];
 

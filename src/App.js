@@ -2,6 +2,7 @@ import React, {Suspense} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import './mock/index'
 
 import routes from './router/index'
 import './App.css'

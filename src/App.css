@@ -12,3 +12,45 @@
         opacity: 1;
     }
 }
+
+.react-swipeable-view-container {
+    height: auto !important;
+}
+
+.goodsDetailOptionBar {
+    height: 2.5rem;
+    width: 100%;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+.goodsDetailOptionBar div {
+    height: 100%;
+    float: left;
+    display:table;
+    text-align: center;
+}
+.goodsDetailOptionBar .title {
+    width: 10%;
+}
+.goodsDetailOptionBar .title span {
+    display: table-cell;
+    vertical-align:middle;
+    color: #616161;
+    font-size: 14px;
+}
+.goodsDetailOptionBar .content {
+    flex: 8;
+    width: 80%;
+    line-height: 2.5rem;
+}
+.goodsDetailOptionBar .leftIcon {
+    position: relative;
+    width: 10%;
+}
+.goodsDetailOptionBar .leftIcon svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+

@@ -1,5 +1,6 @@
 import axios from './service'
-const base = 'http://127.0.0.1:3030';
+// const base = 'http://127.0.0.1:3030';
+const base = '';
 
 export function axiosPost(url,params) {
 	return axios({

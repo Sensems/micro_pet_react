@@ -1,6 +1,5 @@
 .detail {
   padding: 55px 15px 15px;
-
   .userInfo {
     position: relative;
     overflow: hidden;
@@ -28,7 +27,6 @@
       position: absolute;
       display: inline-block;
       line-height: 30px;
-      width: 40px;
       text-align: center;
       right: 0;
       top: 50%;
@@ -38,7 +36,7 @@
       font-size: 14px;
       border-radius: 5px;
       font-weight: bold;
-      padding: 0 6px;
+      padding: 0 10px;
     }
   }
   .title {
@@ -74,13 +72,11 @@
     border-radius: 3px;
     background: #edebec;
     outline: none;
-    //margin-left: 15px;
     padding-left: 8px;
     color: #454952;
     transition: all .4s;
   }
   >button {
-    //transform: translateX(-30%);
     padding: 4px 16px;
     height: 32px;
     box-shadow: none;
@@ -89,9 +85,11 @@
     font-size: 14px;
     color: #c6c4c5;
     padding: 0 6px;
-    width: 38%;
+    width: 40%;
     overflow: hidden;
     text-align: center;
+    height: 40px;
+    transition: all .3s;
     svg {
       margin-bottom: -5px;
       margin-right: 3px;
