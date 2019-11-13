@@ -8,6 +8,8 @@ import GoodsDetailOptionBar from '../../components/goodsDetailOptionBar'
 import HeadsetMicIcon from '@material-ui/icons/HeadsetMic';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -32,7 +34,17 @@ class GoodsDetails extends React.Component{
 		return (
 				<div className={style.goodsDetailsWrap}>
 					<header>
-
+						<div className={style.goBack}>
+							<span><ArrowBackIosIcon /></span>
+						</div>
+						<div className={style.content}>
+							<span className={style.titleItem}>商品</span>
+							<span className={style.titleItem} style={{margin:'0 1rem'}}>评论</span>
+							<span className={style.titleItem}>详情</span>
+						</div>
+						<div className={style.goMy}>
+							<span><SupervisorAccountIcon /></span>
+						</div>
 					</header>
 					<div className={style.goodsCarousel}>
 						<AutoPlaySwipeableViews index={state.SwipeIndex} onChangeIndex={this.handleChangeIndex}>
@@ -69,9 +81,26 @@ class GoodsDetails extends React.Component{
 					<GoodsDetailOptionBar className={style.baseStyle} title="服务">
 
 					</GoodsDetailOptionBar>
-					<GoodsDetailOptionBar className={style.baseStyle} title="评论">
+					<div className={style.commentsBox}>
+						<GoodsDetailOptionBar className={style.baseStyle} title="评论">
 							<span style={{float:'right',fontWeight:'bold'}}>好评 99%</span>
-					</GoodsDetailOptionBar>
+						</GoodsDetailOptionBar>
+						<div className={style.commentList}>
+							<div className={style.commentItem}>
+
+							</div><div className={style.commentItem}>
+
+							</div><div className={style.commentItem}>
+
+							</div><div className={style.commentItem}>
+
+							</div><div className={style.commentItem}>
+
+							</div><div className={style.commentItem}>
+
+							</div>
+						</div>
+					</div>
 					<div className={style.goodsDetailFooter}>
 						<div className={style.FooterLeft}>
 							<div className={style.leftItem}>
